@@ -3,7 +3,7 @@
 Homebrew formulae for my tools.
 
 ```sh
-brew install nickypro/tap/pdftk-rs
+brew install nickypro/tap/pdftk-rs   # installs `pdftk-rs` and a `pdftk` alias
 ```
 
 | Formula | What it is |

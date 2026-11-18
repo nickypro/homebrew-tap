@@ -3,6 +3,9 @@ class PdftkRs < Formula
   homepage "https://github.com/nickypro/pdftk-rs"
   version "0.1.0"
   license "GPL-2.0-or-later"
+  revision 1
+
+  conflicts_with "pdftk-java", because: "both install a `pdftk` executable"
 
   on_macos do
     on_arm do
@@ -28,10 +31,13 @@ class PdftkRs < Formula
 
   def install
     bin.install "pdftk-rs"
+    # Drop-in replacement: also answer to the original name.
+    bin.install_symlink "pdftk-rs" => "pdftk"
     doc.install "README.md"
   end
 
   test do
     assert_match "pdftk-rs #{version}", shell_output("#{bin}/pdftk-rs --version")
+    assert_match "pdftk-rs #{version}", shell_output("#{bin}/pdftk --version")
   end
 end
